@@ -1,7 +1,7 @@
 body {
     background-color: rgb(1, 8, 19);
 }
-#inputParent {
+.parent {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,7 @@ body {
     border: 2px solid #4A5158;
     margin-left: 0.5%;
 }
-#send:hover {
+#send:active {
     opacity: 0.8;
 }
 #sendIcon {
@@ -32,27 +32,12 @@ body {
     height: 5.5vh;
     margin: 0.4vh;
 }
-#statusParent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 #status {
     color: white;
-}
-#logoParent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 #logo {
     height: 30vh;
     width: 20vh;
-}
-#resultParent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 #result {
     color: white;

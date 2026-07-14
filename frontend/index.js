@@ -9,14 +9,14 @@ async function sendMessage() {
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify({"message" : input.value.trim()})
     });
-    return await res.json();
+    return res.json();
 };
 
 async function getStatus() {
     const res = await fetch("http://127.0.0.1:9090/status-get");
     const data = await res.json();
     currentStatus.innerHTML = `Status: <b style="color: green">${data.status}</b>`;
-    return await data;
+    return data;
 };
 
 async function getResult() {
@@ -33,7 +33,7 @@ async function run() {
             currentStatus.innerHTML = `Status: <b style="color: orange">Pending</b>`;
             await sendMessage();
             await getStatus();
-            await getResult();
+            getResult();
             input.value = "";
         }
     }

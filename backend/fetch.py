@@ -10,7 +10,7 @@ def is_palindrome(data: dict, response: dict):
     else:
         response["is_palindrome"] = f"❌ '{data['message']}' => '{data['message'][::-1]}' is not Palindrome!"
     
-    print(" Result ".center(50, "-"))
+    print(" New Word ".center(50, "-"))
     print(f"{data['message']} => {data['message'][::-1]}")
     
     requests.post("http://127.0.0.1:9090/is-palindrome", json=response)
