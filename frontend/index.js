@@ -4,7 +4,7 @@ const currentStatus = document.getElementById("status");
 const showResult = document.getElementById("result");
 
 async function sendMessage() {
-    const res = await fetch("http://127.0.0.1:9090/message-post", {
+    const res = await fetch("http://127.0.0.1:9090/message", {
         method: 'POST',
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify({"message" : input.value.trim()})
@@ -13,17 +13,17 @@ async function sendMessage() {
 };
 
 async function getStatus() {
-    const res = await fetch("http://127.0.0.1:9090/status-get");
+    const res = await fetch("http://127.0.0.1:9090/status");
     const data = await res.json();
     currentStatus.innerHTML = `Status: <b style="color: green">${data.status}</b>`;
     return data;
 };
 
 async function getResult() {
-    const res = await fetch("http://127.0.0.1:9090/result-get");
+    const res = await fetch("http://127.0.0.1:9090/result");
     const data = await res.json();
-    showResult.innerHTML = `<b>${data.msg}</b>`;
-    return await data;
+    showResult.innerHTML = `<b>${data.word}</b>`;
+    return data;
 }
 
 async function run() {
@@ -37,8 +37,8 @@ async function run() {
             input.value = "";
         }
     }
-    catch {
-        currentStatus.innerHTML = `Status: <b style="color: red">Failed</b>`;
+    catch (Err){
+        currentStatus.innerHTML = `Failed: <b style="color: red">${Err}</b>`;
     }
 };
 

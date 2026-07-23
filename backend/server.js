@@ -19,39 +19,39 @@ function randInt(range, ms=false) {
 }
 
 let data = {message: null, status : null};
-let result = {msg: null};
+let result = {word: null};
 
-app.post('/message-post', (req, res) => {
+app.post('/message', (req, res) => {
     data.message = req.body.message;    
     setTimeout(() => {
         console.log(`[>] New Message: ${data.message}`);
         data.status = "Sent";
-        res.send(JSON.stringify({"response": "Sent"}));
+        res.json({server : "Server Received"});
     }, randInt(5, ms=true));
 });
 
-app.get('/message-get', (req, res) => {
-    res.send(JSON.stringify(data));
+app.get('/message', (req, res) => {
+    res.json(data);
 });
 
-app.get('/status-get', (req, res) => {
-    res.send(JSON.stringify(data));
+app.get('/status', (req, res) => {
+    res.json(data);
 });
 
-app.post('/status-post', (req, res) => {
+app.post('/status', (req, res) => {
     data.status = req.body.status;
-    res.send(true);
+    res.json({server : "Status Received"});
 });
 
 app.post('/is-palindrome', (req, res) => {
-    result.msg = req.body.is_palindrome;
-    console.log(result.msg);
-    res.send(true);
+    result.word = req.body.word;
+    console.log(result.word);
+    res.json({server : "Result Received"});
 });
 
-app.get('/result-get', (req, res)=> {
+app.get('/result', (req, res)=> {
     setTimeout(() => {
-        res.send(JSON.stringify(result));
+        res.json(result);
     }, randInt(5, ms=true));
 });
 
